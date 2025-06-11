@@ -1,11 +1,11 @@
 /* 🔵 Main Page */
 .subsystem-page {
-  margin-top: 50px;
     width: 100%;
     min-height: 100vh;
     background: #f9f9f9;
     text-align: center;
     padding-bottom: 50px;
+    margin-top: 4rem;
   }
   
   /* 🔵 Hero Section */

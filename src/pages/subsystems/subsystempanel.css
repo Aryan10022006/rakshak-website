@@ -1,3 +1,587 @@
+/* Base Panel */
+.panel-overlay {
+  position: fixed;
+  inset: 0;
+  background: #212529; /* Dark background to match image */
+  z-index: 2000;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  overflow-y: auto;
+  display: block;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', sans-serif;
+  color: #f8f9fa; /* Light text color for contrast */
+}
+
+/* Slide Animations */
+.slide-left { animation-name: slideInFromLeft; }
+.slide-right { animation-name: slideInFromRight; }
+.slide-out-left { animation-name: slideOutToLeft; }
+.slide-out-right { animation-name: slideOutToRight; }
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOutToLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes slideOutToRight {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+/* Panel Banner */
+.panel-banner {
+  position: relative;
+  background: #212529; /* Keep consistent dark background */
+  color: white;
+  padding: 1.5rem 2rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px; /* Adjust height as needed */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+}
+
+.panel-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  color: #ffffff;
+}
+
+.panel-back-button {
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Thinner, subtle border */
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.panel-back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* Diagram Section */
+.panel-diagram-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align text to the top */
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  gap: 4rem; /* Space between text and image */
+}
+
+.diagram-text-content {
+  flex: 1;
+  padding-top: 2rem; /* Align text to the top of the image */
+}
+
+.diagram-subsystem-title {
+  font-size: 3.5rem; /* Larger font size */
+  font-weight: 800; /* Bolder */
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.diagram-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #cccccc;
+  margin-bottom: 2.5rem;
+}
+
+.diagram-features-title,
+.diagram-specs-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #6dc7ff; /* Accent color from image */
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.diagram-features-list,
+.diagram-specs-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2.5rem;
+}
+
+.diagram-features-list li,
+.diagram-specs-list li {
+  font-size: 1rem;
+  color: #f8f9fa;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem; /* Space for custom bullet */
+}
+
+.diagram-features-list li::before {
+  content: '•'; /* Custom bullet point */
+  position: absolute;
+  left: 0;
+  color: #6dc7ff; /* Accent color for bullet */
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.spec-label {
+  font-weight: 700;
+  color: #ffffff;
+  display: inline-block;
+  width: 90px; /* Align labels */
+}
+
+.diagram-image-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem; /* To align image with text top */
+}
+
+.drone-diagram-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(1.2); /* Removed drop-shadow to match image */
+}
+
+/* Positioning labels relative to the diagram image (adjust these values based on actual image) */
+/* Removed .label and its associated styles as they are now part of the image */
+/*
+.label {
+  position: absolute;
+  background: rgba(109, 199, 255, 0.2);
+  border: 1px solid #6dc7ff;
+  color: #ffffff;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.label:hover {
+  background: #6dc7ff;
+  box-shadow: 0 0 15px rgba(109, 199, 255, 0.6);
+}
+
+.label.flight-control {
+  top: 10%;
+  left: 60%;
+}
+
+.label.communication {
+  top: 30%;
+  left: 70%;
+}
+
+.label.navigation {
+  bottom: 15%;
+  left: 55%;
+}
+*/
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .panel-diagram-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .diagram-text-content {
+    text-align: center;
+    padding-top: 0;
+  }
+
+  .diagram-subsystem-title {
+    font-size: 2.8rem;
+  }
+
+  .panel-back-button {
+    left: 1rem;
+  }
+
+  .panel-title {
+    font-size: 2rem;
+  }
+
+  .diagram-features-list li,
+  .diagram-specs-list li {
+    padding-left: 0;
+    text-align: left;
+  }
+  .diagram-features-list li::before {
+    left: auto;
+    right: calc(100% - 1.2em); /* Adjust bullet position for centered text */
+    transform: translateX(100%);
+  }
+
+  .diagram-image-container {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .panel-banner {
+    padding: 1rem;
+    min-height: 80px;
+  }
+
+  .panel-title {
+    font-size: 1.8rem;
+  }
+
+  .panel-back-button {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .panel-diagram-section {
+    padding: 0 1rem;
+  }
+
+  .diagram-subsystem-title {
+    font-size: 2.2rem;
+  }
+
+  .diagram-description,
+  .diagram-features-list li,
+  .diagram-specs-list li {
+    font-size: 0.9rem;
+  }
+
+  .spec-label {
+    width: 70px;
+  }
+}
+
+/* Main Content Layout */
+.panel-main-content {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Spacing between sections */
+}
+
+/* Individual Content Sections */
+.panel-section {
+  padding: 0;
+  margin-bottom: 0; /* Handled by gap in parent */
+}
+
+.panel-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #005f9e;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e0e0e0; /* Subtle separator */
+}
+
+.panel-section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #495057;
+}
+
+/* Key Features/Capabilities List */
+.panel-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+  gap: 1rem;
+}
+
+.panel-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #f0f0f0; /* Very light background, no shadow */
+  border-left: 4px solid #005f9e; /* Accent border */
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.panel-features li i {
+  color: #005f9e;
+  font-size: 1.2rem;
+}
+
+.panel-features li:hover {
+  background-color: #e0e0e0;
+}
+
+/* Technical Specifications Grid */
+.panel-specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.spec-category {
+  padding: 1.5rem;
+  background: #ffffff; /* Clean white background */
+  border: 1px solid #e0e0e0; /* Subtle border, no shadow */
+  border-radius: 8px;
+}
+
+.spec-category h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #005f9e;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed #e0e0e0; /* Dashed separator */
+  padding-bottom: 0.5rem;
+}
+
+.spec-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.spec-category li {
+  padding: 0.6rem 0;
+  font-size: 1rem;
+  color: #495057;
+}
+
+/* Gallery Section */
+.panel-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.panel-gallery img {
+  width: 100%;
+  height: 200px; /* Fixed height for consistency */
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.panel-gallery img:hover {
+  transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+/* Hero Banner */
+.hero-banner {
+  position: sticky;
+  top: 0;
+  background: #005f9e;
+  color: white;
+  padding: 1.5rem 2rem;
+  z-index: 10;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.back-button {
+  position: absolute;
+  left: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
+}
+
+/* Main Content */
+.panel-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Hero Image */
+.hero-image {
+  margin-bottom: 3rem;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Content Sections */
+.content-section {
+  margin-bottom: 4rem;
+}
+
+.content-section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #005f9e;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.content-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #495057;
+}
+
+/* Capabilities Grid */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.capability-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.capability-item i {
+  color: #005f9e;
+  font-size: 1.2rem;
+}
+
+.capability-item span {
+  font-size: 1.1rem;
+  color: #495057;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-item {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Technical Specifications */
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.specs-column h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #005f9e;
+  margin-bottom: 1rem;
+}
+
+.specs-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.specs-column li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+.specs-column li i {
+  color: #005f9e;
+  font-size: 1.2rem;
+}
+
+.specs-column li span {
+  font-size: 1.1rem;
+  color: #495057;
+}
+
 /* Overlay Panel */
 .panel-overlay {
   position: fixed;
@@ -12,29 +596,6 @@
   font-family: 'Segoe UI', sans-serif;
   color: #333;
   padding-top: 0;
-}
-
-/* Slide Animations */
-.slide-left { animation-name: slideInFromLeft; }
-.slide-right { animation-name: slideInFromRight; }
-.slide-out-left { animation-name: slideOutToLeft; }
-.slide-out-right { animation-name: slideOutToRight; }
-
-@keyframes slideInFromLeft {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-@keyframes slideInFromRight {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
-@keyframes slideOutToLeft {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
-@keyframes slideOutToRight {
-  from { transform: translateX(0); }
-  to { transform: translateX(100%); }
 }
 
 /* Banner */

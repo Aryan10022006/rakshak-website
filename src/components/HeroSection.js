@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from "./ui/button";
 import '../styles/HeroSection.css';
+import { Target, Cpu, Zap } from "lucide-react";
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,28 +27,47 @@ const HeroSection = () => {
         }}
       />
       
-      <div className={`hero-content-main ${isLoaded ? 'loaded' : ''}`}>
-        <div className="hero-logo-container">
+      <div className="hero-content-main">
+        <div className="hero-left-content">
+          <div className="brand-text">
+          <h5 style={{color: '#7f7c7c'}}>#Welcome To</h5>
+            <h1 className="team-text">TEAM</h1>
+            <h1 className="rakshak-text">RAKSHAK</h1>
+            <h2 style={{fontSize: "3rem",color:"#3cabf4",fontWeight:'800'}}>IIT BOMBAY</h2>
+          </div>
+          
+          <div className="feature-icons">
+            <div className="feature-item">
+              <Target className="feature-icon" />
+              <span className="feature-text">Precision Control</span>
+            </div>
+            <div className="feature-item">
+              <Cpu className="feature-icon" />
+              <span className="feature-text">AI-Powered</span>
+            </div>
+            <div className="feature-item">
+              <Zap className="feature-icon" />
+              <span className="feature-text">Advanced Systems</span>
+            </div>
+          </div>
+
+          <Button 
+            size="lg" 
+            className="hero-cta-button"
+            asChild
+          >
+            <a href="#join">Join Us</a>
+          </Button>
+        </div>
+
+        <div className="targeting-scope">
           <img 
-            src={`${process.env.PUBLIC_URL}/images/rakshak_logo.gif`}
-            alt="Team Rakshak Logo" 
-            className="hero-logo"
+            src={`${process.env.PUBLIC_URL}/images/gun_scope.png`} /* Replace with your actual PNG path */
+            alt="Targeting Scope"
+            className="gun-scope-png"
           />
         </div>
-        
-        <h1 className="hero-title">Team Rakshak – IIT Bombay</h1>
-        <p className="hero-subtitle">Engineering drones to protect lives.</p>
-        
-        <Button 
-          size="lg" 
-          className="hero-cta-button"
-          asChild
-        >
-          <a href="#join">Join Us</a>
-        </Button>
       </div>
-
-      <div className="scroll-indicator">↓</div>
     </section>
   );
 };

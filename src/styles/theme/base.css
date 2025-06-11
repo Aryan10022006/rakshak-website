@@ -1,7 +1,5 @@
 /* Base Styles */
 html, body {
-  margin: 0;
-  padding: 0;
   width: 100%;
   overflow-x: hidden;
 }
@@ -22,7 +20,6 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
   font-weight: 700;
   line-height: 1.2;
 }

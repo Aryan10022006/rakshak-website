@@ -37,7 +37,6 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 4rem 2rem;
   margin-bottom: 4rem;
 }
 
@@ -94,7 +93,6 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-top: 4rem;
   perspective: 1000px;
   flex-wrap: wrap;
 }

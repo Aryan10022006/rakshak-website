@@ -32,6 +32,7 @@
   padding: var(--spacing-xl) var(--spacing-md);
   position: relative;
   z-index: 2;
+  margin-top: 4rem;
 }
 
 .team-page-section {

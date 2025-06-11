@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--white);
-  z-index: var(--z-modal);
+  z-index: 1000;
   overflow: hidden;
 }
 

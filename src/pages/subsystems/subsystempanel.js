@@ -3,6 +3,7 @@ import "./subsystempanel.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const droneImage = "/images/drone.jpg";
+const droneDiagram = "/images/subsystem_drone_diagram.png"; // Placeholder for your drone diagram PNG
 
 function SubsystemPanel({ isOpen, onClose, data, position }) {
   const [shouldRender, setShouldRender] = useState(false);
@@ -53,88 +54,37 @@ function SubsystemPanel({ isOpen, onClose, data, position }) {
 
   return (
     <div className={`panel-overlay ${slideClass} ${exitClass}`}>
-      {/* Hero / Banner */}
-      <div className="banner-section text-center py-5">
-        <button className="btn btn-outline-light back-button" onClick={onClose}>
-          <i className="bi bi-arrow-left me-2"></i> Back to Subsystems
+      {/* Panel Banner */}
+      <div className="panel-banner">
+        <button className="panel-back-button" onClick={onClose}>
+          <i className="bi bi-arrow-left"></i> Back
         </button>
-        <h1 className="display-5 fw-bold">{data.name || "Subsystem"}</h1>
+        <h1 className="panel-title">{data.name || "AVIONICS SUBSYSTEM"}</h1>
       </div>
 
-      {/* Particle Background Layer */}
-      <div className="particle-icon-background"></div>
+      {/* Diagram Section */}
+      <div className="panel-diagram-section">
+        <div className="diagram-text-content">
+          <h2 className="diagram-subsystem-title">{data.name || "AVIONICS SUBSYSTEM"}</h2>
+          <p className="diagram-description">{data.description || "The brain of our drone, managing the flight control, navigation, communication, and power systems with high efficiency and reliability."}</p>
 
-      {/* Content */}
-      <div className="container panel-content py-5 position-relative">
-        {/* Hero Image */}
-        <div className="hero-image mb-4">
-          <img
-            src={data.images?.[0] || "/images/sandy.jpg"}
-            alt="Hero"
-            className="img-fluid rounded shadow"
-          />
-        </div>
-<div className="flex-section">
-        {/* Description */}
-        <section className="info-card">
-          <h2><i className="bi bi-info-circle me-2"></i>Description</h2>
-          <p>{data.description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}</p>
-        </section>
-
-        {/* Capabilities */}
-        <section className="info-card">
-          <h2><i className="bi bi-lightning-charge-fill me-2"></i>Capabilities</h2>
-          <ul className="list-unstyled">
-            {(data.features || ["Autonomous Navigation", "Obstacle Detection"]).map((feature, idx) => (
-              <li key={idx}>
-                <i className="bi bi-check-circle-fill text-success me-2"></i>{feature}
-              </li>
-            ))}
+          <h3 className="diagram-features-title">FEATURES</h3>
+          <ul className="diagram-features-list">
+            <li>Real-time sensor data processing</li>
+            <li>Redundant safety mechanisms</li>
+            <li>Custom flight control algorithms</li>
           </ul>
-        </section>
-</div>
-        {/* Gallery */}
-        <section className="info-card">
-          <h2><i className="bi bi-images me-2"></i>Gallery</h2>
-          <div className="row g-3">
-            {(data.images || [droneImage, droneImage]).map((img, idx) => (
-              <div key={idx} className="col-md-4 col-sm-6">
-                <div className="gallery-image rounded shadow-sm">
-                  <img src={img} alt={`Gallery ${idx + 1}`} className="img-fluid" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
 
-        {/* Technical Specifications */}
-        <section className="info-card">
-          <h2><i className="bi bi-gear-wide-connected me-2"></i>Technical Specifications</h2>
-          <div className="row">
-            <div className="col-md-6">
-              <h5 className="text-primary">Hardware</h5>
-              <ul className="list-unstyled">
-                {(data.hardware || ["GPS", "IMU"]).map((item, idx) => (
-                  <li key={idx}><i className="bi bi-cpu me-2"></i>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="col-md-6">
-              <h5 className="text-primary">Software</h5>
-              <ul className="list-unstyled">
-                {(data.software || ["Firmware", "Path Planning"]).map((item, idx) => (
-                  <li key={idx}><i className="bi bi-code-slash me-2"></i>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
+          <h3 className="diagram-specs-title">SPECIFICATIONS</h3>
+          <ul className="diagram-specs-list">
+            <li><span className="spec-label">CPU</span> ARM Cortex-A53</li>
+            <li><span className="spec-label">OS</span> Real-time Linux</li>
+            <li><span className="spec-label">POWER</span> 15W peak, 5W nominal</li>
+          </ul>
+        </div>
 
-        {/* Undo Button */}
-        <div className="text-center my-4">
-          <button className="btn btn-outline-secondary px-4 py-2" onClick={onClose}>
-            <i className="bi bi-arrow-counterclockwise me-2"></i>Undo
-          </button>
+        <div className="diagram-image-container">
+          <img src={droneDiagram} alt="Drone Subsystem Diagram" className="drone-diagram-image" />
         </div>
       </div>
     </div>

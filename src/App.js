@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import GlobalStyles from './styles/GlobalStyles';
 import LoadingScreen from './components/LoadingScreen';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -23,10 +22,10 @@ import Subsystem from './pages/subsystems/subsystem';
 function App() {
   return (
     <Router>
-      <GlobalStyles />
+      <LoadingScreen />
+      <Navbar />
       <div className="App">
-        <LoadingScreen />
-        <Navbar />
+        
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />

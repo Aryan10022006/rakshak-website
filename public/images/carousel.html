@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Infinite Plane Carousel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            overflow: hidden;
+            border-radius: 10px;
+            background: white;
+            padding: 10px;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            flex: 0 0 20%; /* 5 items visible at a time (100% / 5) */
+            text-align: center;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-item p {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .buttons button {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .buttons button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .carousel-item {
+                flex: 0 0 50%; /* Show 2 items on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-item {
+                flex: 0 0 100%; /* Show 1 item on very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Our Top Collections Are Here!</h2>
+    <p>"Guardians of the skies, engineers of peace - every bolt, every flight secures our nation's might."</p>
+
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-item"><img src="./sae_plane.jpg" alt="SAE PLANE"><p>SAE PLANE</p></div>
+            <div class="carousel-item"><img src="./sandy.jpg" alt="SANDY"><p>SANDY</p></div>
+            <div class="carousel-item"><img src="./sandy_2.jpg" alt="SANDY 2.0"><p>SANDY 2.0</p></div>
+            <div class="carousel-item"><img src="skywalker.jpg" alt="SKYWALKER"><p>SKYWALKER</p></div>
+            <div class="carousel-item"><img src="smokey.jpg" alt="SMOKEY"><p>SMOKEY</p></div>
+            <div class="carousel-item"><img src="falcon.jpg" alt="FALCON"><p>FALCON</p></div>
+            <div class="carousel-item"><img src="eagle.jpg" alt="EAGLE"><p>EAGLE</p></div>
+        </div>
+        <div class="buttons">
+            <button id="prev">&#10094;</button>
+            <button id="next">&#10095;</button>
+        </div>
+    </div>
+
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const items = document.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+        const visibleItems = 5;
+        let index = 0;
+
+        // Clone first and last few items for infinite effect
+        const firstClones = [];
+        const lastClones = [];
+
+        for (let i = 0; i < visibleItems; i++) {
+            const firstClone = items[i].cloneNode(true);
+            const lastClone = items[totalItems - 1 - i].cloneNode(true);
+            firstClones.push(firstClone);
+            lastClones.unshift(lastClone);
+        }
+
+        firstClones.forEach(clone => carousel.appendChild(clone));
+        lastClones.forEach(clone => carousel.insertBefore(clone, items[0]));
+
+        const itemWidth = 100 / visibleItems;
+        let offset = visibleItems;
+        carousel.style.transform = `translateX(-${offset * itemWidth}%)`;
+
+        function updateCarousel() {
+            carousel.style.transition = "transform 0.5s ease-in-out";
+            carousel.style.transform = `translateX(-${offset * itemWidth}%)`;
+        }
+
+        function showSlide(direction) {
+            if (direction === 'next') {
+                offset++;
+                updateCarousel();
+                if (offset === totalItems + visibleItems) {
+                    setTimeout(() => {
+                        carousel.style.transition = "none";
+                        offset = visibleItems;
+                        carousel.style.transform = `translateX(-${offset * itemWidth}%)`;
+                    }, 500);
+                }
+            } else if (direction === 'prev') {
+                offset--;
+                updateCarousel();
+                if (offset === 0) {
+                    setTimeout(() => {
+                        carousel.style.transition = "none";
+                        offset = totalItems;
+                        carousel.style.transform = `translateX(-${offset * itemWidth}%)`;
+                    }, 500);
+                }
+            }
+        }
+
+        document.getElementById('next').addEventListener('click', () => showSlide('next'));
+        document.getElementById('prev').addEventListener('click', () => showSlide('prev'));
+
+        // Auto Slide
+        setInterval(() => showSlide('next'), 3000);
+
+        // Swipe for mobile
+        let startX;
+        carousel.addEventListener("touchstart", (e) => startX = e.touches[0].clientX);
+        carousel.addEventListener("touchend", (e) => {
+            let endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) showSlide("next");
+            else if (startX < endX - 50) showSlide("prev");
+        });
+    </script>
+
+</body>
+</html>

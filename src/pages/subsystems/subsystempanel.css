@@ -1,0 +1,211 @@
+/* Overlay Panel */
+.panel-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  z-index: 2000;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  overflow-y: auto;
+  display: block;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  padding-top: 0;
+}
+
+/* Slide Animations */
+.slide-left { animation-name: slideInFromLeft; }
+.slide-right { animation-name: slideInFromRight; }
+.slide-out-left { animation-name: slideOutToLeft; }
+.slide-out-right { animation-name: slideOutToRight; }
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes slideOutToLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+@keyframes slideOutToRight {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+/* Banner */
+.banner-section {
+  background: linear-gradient(135deg, #005f9e, #2687c2);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 2px solid #6dc7ff;
+  padding: 1rem 2rem;
+}
+.banner-section .back-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* Panel Content */
+.panel-content {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Hero Image */
+.hero-image img {
+  width: 100%;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+.hero-image img:hover {
+  transform: scale(1.04);
+}
+
+/* Info Cards */
+.info-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+.info-card:hover {
+  transform: translateY(-4px);
+}
+.info-card h2 {
+  font-weight: 600;
+  color: #005f9e;
+  font-family: "Merriweather", serif;
+  margin-bottom: 1rem;
+}
+.info-card ul li {
+  padding: 0.4rem 0;
+}
+
+/* Gallery */
+.gallery-image {
+  overflow: hidden;
+  border-radius: 12px;
+}
+.gallery-image img {
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+.gallery-image img:hover {
+  transform: scale(1.08);
+}
+
+/* Typography */
+.panel-overlay p,
+.panel-overlay li {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Scroll freeze */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .panel-overlay {
+    padding: 0 1rem;
+  }
+  .banner-section h1 {
+    font-size: 1.4rem;
+  }
+  .info-card {
+    padding: 1.5rem;
+  }
+}
+/* Particle Background */
+.icon-particle-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.icon-particle {
+  position: absolute;
+  opacity: 0.05;
+  color: #999;
+  animation: float 20s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-50px) rotate(360deg); }
+}
+
+/* Adjust panel-content for background layering */
+.panel-content {
+  max-width: 1000px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+/* Particle Icon Background */
+
+
+/* Ensure content is above particle layer */
+.panel-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Adjust banner shadow layering */
+.banner-section {
+  z-index: 3;
+  position: sticky;
+  top: 0;
+}
+.info-card:nth-of-type(even) {
+  background-color: #f1f5f9; /* light grey-blue */
+}
+
+.info-card:nth-of-type(odd) {
+  background-color: #ffffff; /* pure white */
+}
+.flex-section {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.flex-section .info-card {
+  flex: 1 1 48%;
+}
+/* Optional: subtle motion on icons (feel free to disable) */
+@keyframes drift {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(5px); }
+}
+
+@media (max-width: 768px) {
+  .flex-section {
+    flex-direction: column;
+  }
+
+  .flex-section .info-card {
+    flex: 1 1 100%;
+  }
+}

@@ -1,0 +1,218 @@
+.contact-page {
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  padding: 2rem 1rem;
+  color: #333;
+}
+
+.contact-hero {
+  position: relative;
+  height: 40vh;
+  min-height: 300px;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+              url('../../styles/theme/back-drone.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+.contact-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 255, 0.2), rgba(0, 0, 0, 0.4));
+  z-index: 1;
+}
+.contact-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
+.contact-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.contact-hero p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-content {
+  position: relative;
+  margin-top: -50px;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.contact-form-section,
+.contact-info-section {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  padding: 2rem;
+  flex: 1 1 500px;
+}
+
+.contact-form h2,
+.contact-info-section h2 {
+  margin-bottom: 1.5rem;
+  color: #005f9e;
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.5rem;
+}
+.contact-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #007acc;
+}
+
+.contact-button {
+  background: #007acc;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+.contact-button:hover {
+  background: #005f9e;
+}
+
+.map-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.map-container iframe {
+  transition: all 0.3s ease;
+}
+.map-container:hover iframe {
+  transform: scale(1.02);
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+.social-icons a {
+  font-size: 1.5rem;
+  color: #007acc;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #005f9e;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  color: #374151;
+  transition: all 0.3s ease;
+}
+.social-icon:hover {
+  transform: translateY(-3px);
+}
+.social-icon.linkedin:hover {
+  background-color: #0077b5;
+  color: white;
+}
+.social-icon.instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+}
+.social-icon.youtube:hover {
+  background-color: #ff0000;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+  
+  .contact-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .contact-hero p {
+    font-size: 1rem;
+  }
+  
+  .contact-content {
+    margin-top: -30px;
+  }
+}
+
+/* Card Hover Effects */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Form Styling */
+.form-input,
+.form-textarea {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}

@@ -1,0 +1,74 @@
+:root {
+  /* Primary Colors */
+  --primary-blue: #1c9cf5;
+  --secondary-blue: #3cabf4;
+  --accent-blue: #60b2ec;
+  --highlight-blue: #2d7cb3;
+  
+  /* Grey Scale */
+  --grey-50: #f8f9fa;
+  --grey-100: #e9ecef;
+  --grey-200: #dee2e6;
+  --grey-300: #ced4da;
+  --grey-400: #7f7c7c;
+  --grey-500: #656666;
+  --grey-600: #4c4c4c;
+  --grey-700: #343a40;
+  --grey-800: #212529;
+  --grey-900: #050505;
+  
+  /* Base Colors */
+  --white: #ffffff;
+  --black: #000000;
+  
+  /* Typography */
+  --font-primary: 'Inter', 'Poppins', 'Roboto', sans-serif;
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+  --font-size-base: clamp(1rem, 0.9rem + 0.3vw, 1.125rem);
+  --font-size-lg: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --font-size-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --font-size-3xl: clamp(2rem, 1.8rem + 1.25vw, 2.5rem);
+  
+  /* Spacing */
+  --spacing-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --spacing-sm: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --spacing-md: clamp(1rem, 0.8rem + 0.75vw, 1.5rem);
+  --spacing-lg: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  --spacing-xl: clamp(2rem, 1.6rem + 1.25vw, 3rem);
+  
+  /* Container */
+  --container-padding: clamp(1rem, 2vw, 2rem);
+  --container-width: min(100% - var(--container-padding) * 2, 1320px);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+  
+  /* Z-index */
+  --z-negative: -1;
+  --z-normal: 1;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+  
+  /* Breakpoints (for reference) */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+}

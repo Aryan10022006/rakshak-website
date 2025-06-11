@@ -1,0 +1,265 @@
+/* 🔵 Main Page */
+.subsystem-page {
+  margin-top: 50px;
+    width: 100%;
+    min-height: 100vh;
+    background: #f9f9f9;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+  
+  /* 🔵 Hero Section */
+  .subsystem-banner {
+    padding: 80px 20px;
+    background: 
+    #212529;
+    text-align: center;
+  }
+  
+  .subsystem-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  
+  .subsystem-subtitle {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 20px auto;
+    color: #d5d5d5;
+  }
+  
+  /* 🔵 Grid Layout */
+  .subsystem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+  
+  .subsystem-card {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .subsystem-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .subsystem-card:active {
+    transform: scale(0.98);
+  }
+  
+  /* 🔵 Image Styling */
+  .subsystem-image {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .subsystem-placeholder {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ddd;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* 🔵 Info Styling */
+  .subsystem-info {
+    padding: 20px;
+    text-align: left;
+    flex: 1;
+  }
+  
+  .subsystem-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #222;
+  }
+  
+  .subsystem-description {
+    font-size: 1.1rem;
+    color: #444;
+  }
+  
+  /* 🔵 Responsive Design */
+  @media (max-width: 768px) {
+    .subsystem-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .subsystem-card {
+      flex-direction: column;
+    }
+  
+    .subsystem-image, .subsystem-placeholder {
+      width: 100%;
+      height: 200px;
+    }
+  
+    .subsystem-title {
+      font-size: 2.5rem;
+    }
+  
+    .subsystem-subtitle {
+      font-size: 1rem;
+    }
+  }
+  
+
+  /* 🔵 Subsystem Details Section */
+.subsystem-details-section {
+    position: relative;
+    background: #ffffff; /* Light Theme */
+    text-align: center;
+    padding: 80px 20px;
+    overflow: hidden;
+}
+
+/* 🔵 Particle Background */
+.particle-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(#212529 1px, transparent 1px);
+    background-size: 20px 20px;
+    top: 0;
+    left: 0;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+/* 🔵 Section Separator */
+.section-separator {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to right, transparent, #212529, transparent);
+    margin-bottom: 40px;
+}
+
+/* 🔵 Alternating Layout */
+.subsystem-details-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.03);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    scroll-margin-top: 80px; /* Add scroll margin for better positioning */
+    transition: all 0.3s ease-in-out;
+}
+
+.subsystem-details-block:target {
+    animation: highlight 2s ease-in-out;
+}
+
+@keyframes highlight {
+    0% {
+        background: rgba(33, 37, 41, 0.1);
+    }
+    50% {
+        background: rgba(33, 37, 41, 0.2);
+    }
+    100% {
+        background: rgba(0, 0, 0, 0.03);
+    }
+}
+
+.subsystem-details-block.left {
+    flex-direction: row;
+}
+
+.subsystem-details-block.right {
+    flex-direction: row-reverse;
+}
+
+/* 🔵 Text Styling */
+.subsystem-text {
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+}
+
+.subsystem-details-name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #212529;
+}
+
+.subsystem-details-text {
+    font-size: 1.2rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* 🔵 Carousel Container */
+.subsystem-carousel-container {
+    flex: 1;
+    max-width: 500px;
+}
+
+.subsystem-carousel-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* 🔵 Carousel Arrows */
+.carousel-control-prev,
+.carousel-control-next {
+    filter: invert(100%);
+}
+
+.view-more-btn {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* 🔵 Responsive Design */
+@media (max-width: 768px) {
+    .subsystem-details-block {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .subsystem-text {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .subsystem-carousel-container {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .subsystem-details-name {
+        font-size: 1.8rem;
+    }
+
+    .subsystem-details-text {
+        font-size: 1rem;
+    }
+}

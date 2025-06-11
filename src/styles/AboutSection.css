@@ -1,0 +1,117 @@
+.about-section {
+  background-color: #f7f9fc;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.about-heading {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #212529;
+  margin-bottom: 1.5rem;
+}
+
+.about-paragraph {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1.2rem;
+}
+
+.about-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  width: 100%;
+  justify-content: center;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  color: #0055aa;
+  margin-bottom: 1rem;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #003366, #0099ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #555;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-image-wrapper {
+    order: -1;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-section {
+    padding: 3rem 1.5rem;
+  }
+}

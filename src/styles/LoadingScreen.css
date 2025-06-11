@@ -1,0 +1,41 @@
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  z-index: var(--z-modal);
+  overflow: hidden;
+}
+
+.loading-text {
+  width: 1200px;
+  height: 200px;
+}
+
+.text-path {
+  font-size: 120px;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  fill: var(--black);
+  stroke: var(--black);
+  stroke-width: 3;
+  letter-spacing: 2px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+@media (max-width: 768px) {
+  .text-path {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-path {
+    font-size: 60px;
+  }
+}

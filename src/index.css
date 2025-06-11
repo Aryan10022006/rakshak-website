@@ -1,0 +1,80 @@
+:root {
+  /* Primary Colors */
+  --primary-blue: #1c9cf5;  /* Main brand color */
+  --secondary-blue: #3cabf4;  /* Darker blue for contrast */
+  --accent-blue: #60b2ec;  /* Alternative blue */
+  --highlight-blue: #2d7cb3;  /* Deep blue for emphasis */
+  
+  /* Fresh Accent Colors */
+  --fresh-green: #2ecc71;  /* Fresh accent */
+  --warm-orange: #f39c12;  /* Warm accent */
+  --soft-purple: #9b59b6;  /* Soft accent */
+  
+  /* Grey Scale */
+  --grey-50: #f8f9fa;  /* Lightest grey */
+  --grey-100: #e9ecef;
+  --grey-200: #dee2e6;
+  --grey-300: #ced4da;
+  --grey-400: #7f7c7c;  /* Medium grey */
+  --grey-500: #656666;  /* Darker grey */
+  --grey-600: #4c4c4c;  /* Dark grey */
+  --grey-700: #343a40;  /* Darker grey */
+  --grey-800: #212529;  /* Very dark grey */
+  --grey-900: #050505;  /* Almost black */
+  
+  /* Base Colors */
+  --white: #ffffff;
+  --black: #000000;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Poppins', 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: var(--grey-800);
+  background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Bootstrap Overrides */
+.bg-primary {
+  background-color: var(--primary-blue) !important;
+}
+.bg-secondary {
+  background-color: var(--grey-800) !important;
+}
+
+.text-primary {
+  color: var(--primary-blue) !important;
+}
+
+.btn-primary {
+  background-color: var(--primary-blue) !important;
+  border-color: var(--primary-blue) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--highlight-blue) !important;
+  border-color: var(--highlight-blue) !important;
+}
+
+.bg-light {
+  background-color: var(--grey-100) !important;
+}
+
+.text-muted {
+  color: var(--grey-600) !important;
+}
+
+/* Section Spacing */
+
+
+@media (max-width: 768px) {
+
+}

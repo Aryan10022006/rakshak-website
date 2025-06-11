@@ -1,0 +1,39 @@
+.wave-gallery {
+  position: relative;
+  height: 200vh;
+  background: linear-gradient(to bottom, #0f171f, #15202b);
+  overflow: hidden;
+  color: #fff;
+}
+.wave-gallery h2 {
+  position: absolute;
+  top: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  z-index: 5;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+.wave-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max-content;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  height: 400px;
+}
+.wave-item {
+  position: absolute;
+  top: -200px;
+  width: 300px;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.wave-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,98 +1,187 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Card,
   CardHeader,
-  CardTitle,
   CardContent,
-  CardFooter,
 } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Textarea } from "../../components/ui/textarea";
 import { Button } from "../../components/ui/button";
-import "bootstrap/dist/css/bootstrap.min.css";
+import '../../styles/contact.css';
+
+// Placeholder for hover audio ping, remember to provide the actual file
+const pingSound = new Audio('/audio/ping.mp3');
 
 function ContactUs() {
-  return (
-    <div className="contact-us-wrapper py-5 px-3 px-md-5 bg-light">
-      <div className="container">
-        <h1 className="text-center mb-5 fw-bold">Contact Us</h1>
-        <div className="row gy-4">
-          {/* Contact Form */}
-          <div className="col-lg-6">
-            <Card className="shadow-sm h-100">
-              <CardHeader>
-                <h4 className="fw-semibold">Send a Message</h4>
-              </CardHeader>
-              <CardContent>
-                <form>
-                  <div className="mb-3">
-                    <Input type="text" placeholder="Your Name" className="form-control" />
-                  </div>
-                  <div className="mb-3">
-                    <Input type="email" placeholder="Your Email" className="form-control" />
-                  </div>
-                  <div className="mb-3">
-                    <Textarea placeholder="Your Message" rows={5} className="form-control" />
-                  </div>
-                  <Button type="submit" className="w-100 btn-primary mt-2">
-                    Submit
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
+  const [introComplete, setIntroComplete] = useState(false);
+  const buttonRef = useRef(null);
+  const formInputRefs = useRef([]);
+  const socialLinkRefs = useRef([]);
 
-          {/* Map + Contact Details */}
-          <div className="col-lg-6">
-            <Card className="shadow-sm h-100">
-              <CardHeader>
-                <h4 className="fw-semibold">Visit Us</h4>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-3">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086544149249!2d-122.4194160846825!3d37.77492977975927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808f74b2f2ff%3A0x3a1e9f3b5e5d07b5!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1615840389869"
-                    width="100%"
-                    height="200"
-                    allowFullScreen=""
-                    loading="lazy"
-                    style={{ borderRadius: "8px", border: 0 }}
-                    title="Location Map"
+  // Function for hover audio pings
+  const playPing = () => {
+    pingSound.currentTime = 0; // Rewind to start
+    pingSound.play().catch(e => console.error("Error playing audio:", e));
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIntroComplete(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Simplified ripple effect for the button (CSS handles most of it now)
+  const createRipple = (event) => {
+    const button = buttonRef.current;
+    if (!button) return;
+
+    const circle = document.createElement("span");
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+    circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+    circle.classList.add("ripple-effect");
+
+    button.appendChild(circle);
+
+    circle.addEventListener('animationend', () => {
+      circle.remove();
+    });
+  };
+
+  return (
+    <div className="contact-page-command-center">
+      {!introComplete && (
+        <div className="intro-animation-overlay">
+          <p className="intro-text">
+            <i className="bi bi-arrow-repeat"></i> CONNECTING TO RAKSHAK HQ...
+          </p>
+          <p className="intro-text fade-in-delay">
+            <i className="bi bi-check-circle"></i> CHANNEL OPENED. YOU MAY NOW TRANSMIT.
+          </p>
+        </div>
+      )}
+
+      {introComplete && (
+        <div className="main-content-fade-in">
+          <h1 className="page-title-command">
+            <img src="/images/rakshak_drone_icon.png" alt="Rakshak Drone" className="drone-logo" /> CONTACT US
+          </h1>
+
+          <div className="command-center-grid">
+            {/* Left Panel: Contact Form */}
+            <Card className="contact-form-terminal">
+              <div className="form-terminal-layout">
+                <div className="form-group-terminal">
+                  <label htmlFor="name">
+                    Name
+                  </label>
+                  <Input 
+                    id="name" 
+                    placeholder="" 
+                    className="input-terminal" 
+                    ref={el => formInputRefs.current[0] = el} 
+                    onMouseEnter={playPing} 
                   />
                 </div>
-                <p className="mb-1"><strong>Address:</strong> 123 Innovation Street, San Francisco, CA</p>
-                <p className="mb-1"><strong>Phone:</strong> (123) 456-7890</p>
-                <p className="mb-1"><strong>Email:</strong> info@example.com</p>
-              </CardContent>
+                <div className="form-group-terminal">
+                  <label htmlFor="email">
+                    Email
+                  </label>
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    placeholder="" 
+                    className="input-terminal" 
+                    ref={el => formInputRefs.current[1] = el} 
+                    onMouseEnter={playPing} 
+                  />
+                </div>
+                <div className="form-group-terminal">
+                  <label htmlFor="message">
+                    Message
+                  </label>
+                  <Textarea 
+                    id="message" 
+                    placeholder="" 
+                    rows={6} 
+                    className="input-terminal textarea-terminal" 
+                    ref={el => formInputRefs.current[2] = el} 
+                    onMouseEnter={playPing} 
+                  />
+                </div>
+                <div className="form-group-terminal">
+                  <label htmlFor="purpose">
+                    Purpose
+                  </label>
+                  <Input 
+                    id="purpose" 
+                    placeholder="" 
+                    className="input-terminal" 
+                    ref={el => formInputRefs.current[3] = el} 
+                    onMouseEnter={playPing} 
+                  />
+                </div>
+                
+                <Button 
+                  className="button-terminal" 
+                  ref={buttonRef} 
+                  onClick={createRipple} 
+                  onMouseEnter={playPing}
+                >
+                  SEND
+                </Button>
+              </div>
             </Card>
-          </div>
-        </div>
 
-        {/* Follow Us */}
-        <div className="row mt-5">
-          <div className="col">
-            <Card className="shadow-sm text-center">
-              <CardHeader>
-                <h4 className="fw-semibold">Follow Us</h4>
-              </CardHeader>
-              <CardContent className="d-flex justify-content-center gap-4">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-facebook fs-3 text-primary"></i>
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-twitter-x fs-3 text-dark"></i>
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-instagram fs-3 text-danger"></i>
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-linkedin fs-3 text-primary"></i>
-                </a>
-              </CardContent>
-            </Card>
+            {/* Right Panel: Contact Information */}
+            <div className="static-content-panel">
+              <h2 className="panel-heading">
+                CONTACT INFORMATION
+              </h2>
+              <div className="quick-contact-channels">
+                <Card className="contact-channel-card" onMouseEnter={playPing}>
+                  <i className="bi bi-envelope-fill channel-icon"></i>
+                  <div>
+                    <span>team.rakshak@iitb.ac.in</span>
+                  </div>
+                </Card>
+                <Card className="contact-channel-card" onMouseEnter={playPing}>
+                  <i className="bi bi-geo-alt-fill channel-icon"></i>
+                  <div>
+                    <span>IIT Bombay, Powai, Mumbai 400076</span>
+                  </div>
+                </Card>
+                <Card className="contact-channel-card" onMouseEnter={playPing}>
+                  <i className="bi bi-twitter channel-icon"></i>
+                  <div>
+                    <span>twitter team.rakshak</span>
+                  </div>
+                </Card>
+                <Card className="contact-channel-card" onMouseEnter={playPing}>
+                  <i className="bi bi-linkedin channel-icon"></i>
+                  <div>
+                    <span>in team.rakshak</span>
+                  </div>
+                </Card>
+              </div>
+            </div>
           </div>
+
+          {/* Remove AI Chat section for now to match image */}
+          {/* <div className="rakshak-ai-chat">
+            <div className="ai-avatar">
+              <i className="bi bi-cpu"></i>
+            </div>
+            <p className="ai-status">
+              <i className="bi bi-circle-fill"></i> RAKSHAK-AI Online
+            </p>
+          </div> */}
         </div>
-      </div>
+      )}
     </div>
   );
 }

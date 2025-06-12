@@ -1,0 +1,161 @@
+.droneJourneyRoot {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: transparent;
+  }
+  
+  .canvasWrapper {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none; /* allows UI to be clickable */
+  }
+  
+  .scrollContent {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    pointer-events: auto;
+  }
+  
+  .heroSection {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, rgba(28,156,245,0.1) 0%, transparent 70%);
+  }
+  
+  .glassCard {
+    background: rgba(28, 156, 245, 0.12);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(28, 156, 245, 0.22);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 0 40px rgba(28,156,245,0.15);
+    padding: 2.5rem 2rem;
+    margin: 0 auto;
+    max-width: 600px;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  
+  .title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #1c9cf5;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+  }
+  
+  .subtitle {
+    color: #e9ecef;
+    font-size: 1.2rem;
+    margin-bottom: 1.8rem;
+  }
+  
+  .badges {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.2rem;
+  }
+  
+  .badge {
+    background: #1c9cf5;
+    color: #fff;
+    border-radius: 12px;
+    padding: 0.4rem 1.1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    box-shadow: 0 0 8px #1c9cf5;
+  }
+  
+  .competitionSection {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+  }
+  
+  .competitionHeader {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .competitionNumber {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: "Courier New", monospace;
+    text-shadow: 0 0 12px currentColor;
+  }
+  
+  .competitionDate {
+    font-size: 1.1rem;
+    color: #dee2e6;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  
+  .competitionTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .competitionDetails {
+    font-size: 1.15rem;
+    color: #f8f9fa;
+    margin-bottom: 1.2rem;
+  }
+  
+  .techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .techBadge {
+    background: #212529;
+    color: #f8f9fa;
+    border-radius: 8px;
+    padding: 0.3rem 0.95rem;
+    font-size: 0.95rem;
+    font-family: "Courier New", monospace;
+    letter-spacing: 1px;
+    box-shadow: 0 0 8px #1c9cf544;
+  }
+  
+  .competitionImage {
+    display: block;
+    max-width: 320px;
+    width: 100%;
+    margin: 1.5rem auto 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 0 18px #1c9cf5aa;
+    border: 1px solid #1c9cf5;
+  }
+  
+  @media (max-width: 768px) {
+    .glassCard {
+      padding: 1.2rem 0.5rem;
+      max-width: 98vw;
+    }
+    .title {
+      font-size: 2rem;
+    }
+    .competitionTitle {
+      font-size: 1.3rem;
+    }
+    .competitionNumber {
+      font-size: 1.5rem;
+    }
+  }
+  

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import SubsystemPanel from "./subsystempanel";
+import SubsystemPanel from "./subsystempanel.js";
 import "./subsystem.css";
 import "./subsystempanel.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -36,35 +36,51 @@ function SubsystemDetails({ refs }) {
   const [panelOpen, setPanelOpen] = useState(false);
   const [activeSubsystem, setActiveSubsystem] = useState(null);
   const [slideDirection, setSlideDirection] = useState("right");
-
+  const isAnimating = useRef(false); // Track animation state
+  const viewMoreRefs = useRef({}); // For tracking each button's ref
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const viewMoreRefs = useRef({}); // ✅ For tracking each button's ref
+  // Debounce function to prevent rapid clicks
+  const debounce = (func, wait) => {
+    let timeout;
+    return (...args) => {
+      if (!isAnimating.current) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          func.apply(this, args);
+          isAnimating.current = false;
+        }, wait);
+        isAnimating.current = true;
+      }
+    };
+  };
 
   // Open panel and set URL query param
-  const openPanel = (subsystem, direction) => {
+  const openPanel = debounce((subsystem, direction) => {
     setActiveSubsystem(subsystem);
     setSlideDirection(direction);
     setPanelOpen(true);
     setSearchParams({ subsystem: subsystem.name.toLowerCase() });
-  };
+  }, 400); // Match animation duration
 
-  // Close panel and scroll to the corresponding "View More" button
+  // Close panel
   const closePanel = () => {
     setPanelOpen(false);
     setSearchParams({}); // Remove query param
   };
 
-  // Handle query param changes (e.g. from browser back/forward)
+  // Handle query param changes
   useEffect(() => {
-    const param = searchParams.get("subsystem");
+    if (isAnimating.current) return; // Skip if animating
 
+    const param = searchParams.get("subsystem");
     if (param) {
       const found = subsystemDetails.find((s) => s.name.toLowerCase() === param);
       if (found) {
+        const index = subsystemDetails.indexOf(found);
         setActiveSubsystem(found);
-        setSlideDirection("right");
+        setSlideDirection(index % 2 === 0 ? "right" : "left"); // Respect original direction
         setPanelOpen(true);
       }
     } else {
@@ -123,7 +139,6 @@ function SubsystemDetails({ refs }) {
         onClose={closePanel}
         data={activeSubsystem}
         position={slideDirection}
-        anchorRef={viewMoreRefs.current[activeSubsystem?.name?.toLowerCase()]}
       />
     </div>
   );

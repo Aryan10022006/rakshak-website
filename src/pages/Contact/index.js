@@ -7,7 +7,7 @@ import {
 import { Input } from "../../components/ui/input";
 import { Textarea } from "../../components/ui/textarea";
 import { Button } from "../../components/ui/button";
-import '../../styles/contact.css';
+import './Contact.css';
 
 // Placeholder for hover audio ping, remember to provide the actual file
 const pingSound = new Audio('/audio/ping.mp3');

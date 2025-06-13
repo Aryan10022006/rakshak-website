@@ -4,7 +4,7 @@ import AboutSection from '../../components/AboutSection';
 import VideoConsoleSection from '../../components/VideoSection';
 import ProjectsSection from '../../components/ProjectsSection';
 import TeamPage from '../../components/TeamPage';
-import DroneShowcase from '../Media/index.js';
+import ImageCarousel from '../Media/index.js';
 
 function Home() {
   return (
@@ -14,7 +14,7 @@ function Home() {
       <VideoConsoleSection />
       <ProjectsSection />
       <TeamPage />
-      <DroneShowcase />
+      <ImageCarousel/>
     </>
   );
 }

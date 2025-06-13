@@ -12,7 +12,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Team from './pages/Team';
-import Media from './pages/Media';
+import ImageCarousel from './pages/Media';
 import Planes from './pages/Planes';
 import TacticalDroneShowcase from './components/tacticaldroneshowcase';
 import Competitions from './pages/Competitions';
